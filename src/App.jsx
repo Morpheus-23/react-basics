@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RecipeListPage } from "./pages/RecipeListPage";
+import { RecipePage } from "./pages/RecipePage";
 
 export const App = () => {
   // clear the selection
