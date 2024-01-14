@@ -9,7 +9,7 @@ export const App = () => {
   return (
     <div className="App">
       {selectedRecipe ? (
-        <p>Selected : {selectedRecipe.label}</p>
+        <RecipePage recipe={selectedRecipe} clickFn={setSelectedRecipe} />
       ) : (
         <RecipeListPage clickFn={setSelectedRecipe} />
       )}
