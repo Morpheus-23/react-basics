@@ -1,23 +1,21 @@
 import { RecipeItem } from "./RecipeItem";
-import { Flex } from "@chakra-ui/react";
+import { Box, Heading,SimpleGrid} from "@chakra-ui/react";
 
 export const RecipeList = ({ recipes, clickFn }) => {
   return (
-		<Flex
-			gap={16}
-			w={['full', '75%']}
-			flexWrap="wrap"
-			flexDir={['column', 'row']}
-			justify="left"
-			alignItems="center"
-		>
-      {recipes.map((recipe) => (
+
+<Box margin={{ base: "1rem", md: "3rem auto" }} maxWidth={"90%"}>
+
+
+<SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="40px">
+{recipes.map((recipe) => (
         <RecipeItem
           key={recipe.recipe.label}
           recipe={recipe.recipe}
           clickFn={clickFn}
         />
       ))}
-    </Flex>
+</SimpleGrid>
+</Box>
   );
 };

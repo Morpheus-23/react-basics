@@ -1,8 +1,8 @@
-
 import { data } from "../utils/data";
 import { RecipeList } from "../components/RecipeList";
 import { useState } from "react";
-import { TextInput } from "../components/ui/TextInput";
+import { Box, Text, Input } from "@chakra-ui/react";
+
 
 export const RecipeListPage = ({ clickFn }) => {
   const availableRecipes = data.hits;
@@ -21,9 +21,11 @@ export const RecipeListPage = ({ clickFn }) => {
 
   return (
     <>
-      <label>Search for recipes:</label>
-      <TextInput onChange={handleChange} w={400} />
+    <Box align="center">
+      <Text>Search for recipes:</Text>
+      <Input onChange={handleChange} w={400} />
       <RecipeList recipes={matchedRecipes} clickFn={clickFn} />
+      </Box>
     </>
   );
 };

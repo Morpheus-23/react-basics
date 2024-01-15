@@ -1,21 +1,36 @@
-import { Image } from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
-import { WrapItem } from "@chakra-ui/react";
-import { Center } from "@chakra-ui/react";
+import { Image, Text, Box, Badge } from "@chakra-ui/react";
+
 
 export const RecipeItem = ({ recipe, clickFn }) => {
   return (
-    <WrapItem>
-      <Center gap={8} cursor={"pointer"} onClick={() => clickFn(recipe)}>
-        <Image
-          src={recipe.image}
-          w={100}
-          h={100}
-          alt={recipe.label}
-          borderRadius={"xl"}
-        />
-        <Text fontWeight={"450"}>{recipe.label}</Text>
-      </Center>
-    </WrapItem>
+    <Box
+      onClick={() => clickFn(recipe)}
+      align="center"
+      bg={"gray.100"}
+      borderRadius={"xl"}
+      height="480px"
+      overflow="hidden"
+    >
+      <Image src={recipe.image} w={"100%"} h={200} />
+      <Text mt="5" fontWeight="semibold" align="center" >
+        {recipe.label}
+      </Text>
+      <Box mb="5">
+        <Badge borderRadius="full" px="2" colorScheme="orange">
+          Vegetarian
+        </Badge>
+        <Badge borderRadius="full" px="2" colorScheme="green">
+          vegan
+        </Badge>
+      </Box>
+      <Text textTransform="uppercase">dietLabels dietLabels</Text>
+
+      <Text textTransform="capitalize">Meal type: snack, lunch</Text>
+      <Text textTransform="capitalize">dish: desserts</Text>
+
+      <Text color="red.500" textTransform="uppercase">
+        caution1 caution2 caution3 caution4 caution5
+      </Text>
+    </Box>
   );
 };
