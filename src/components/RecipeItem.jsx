@@ -1,5 +1,4 @@
-import { Image, Text, Box, Badge } from "@chakra-ui/react";
-
+import { Image, Text, Box, Badge, Flex } from "@chakra-ui/react";
 
 export const RecipeItem = ({ recipe, clickFn }) => {
   return (
@@ -12,25 +11,84 @@ export const RecipeItem = ({ recipe, clickFn }) => {
       overflow="hidden"
     >
       <Image src={recipe.image} w={"100%"} h={200} />
-      <Text mt="5" fontWeight="semibold" align="center" >
+
+      <Text mt="5" fontWeight="semibold" align="center">
         {recipe.label}
       </Text>
-      <Box mb="5">
-        <Badge borderRadius="full" px="2" colorScheme="orange">
-          Vegetarian
-        </Badge>
-        <Badge borderRadius="full" px="2" colorScheme="green">
-          vegan
-        </Badge>
+
+      <Box mb="3">
+        {recipe.healthLabels.includes("Vegetarian") && (
+          <Badge borderRadius="full" pt={1} px="2" colorScheme="orange">
+            Vegetarian
+          </Badge>
+        )}
+        {recipe.healthLabels.includes("Vegan") && (
+          <Badge borderRadius="full" pt={1} px="2" colorScheme="green">
+            Vegan
+          </Badge>
+        )}
       </Box>
-      <Text textTransform="uppercase">dietLabels dietLabels</Text>
 
-      <Text textTransform="capitalize">Meal type: snack, lunch</Text>
-      <Text textTransform="capitalize">dish: desserts</Text>
+      <Flex direction="row" justify="center" flexWrap="wrap" mb={3}>
+        {recipe.dietLabels.map((dietLabel) => (
+          <Badge
+            key={dietLabel}
+            borderRadius="full"
+            pt={1}
+            px="2"
+            colorScheme="blue"
+          >
+            {dietLabel}
+          </Badge>
+        ))}
+      </Flex>
 
-      <Text color="red.500" textTransform="uppercase">
-        caution1 caution2 caution3 caution4 caution5
-      </Text>
+      <Flex direction="row" justify="center" flexWrap="wrap" mb={3}>
+        <Text>Meal :</Text>
+        {recipe.mealType.map((mealType) => (
+          <Text
+            key={mealType}
+            ml={3}
+            fontWeight="semibold"
+            textTransform="capitalize"
+          >
+            {mealType}
+          </Text>
+        ))}
+      </Flex>
+
+      <Flex direction="row" justify="center" flexWrap="wrap" mb={3}>
+        <Text>Dish :</Text>
+        {recipe.dishType.map((dishType) => (
+          <Text
+            key={dishType}
+            ml={3}
+            fontWeight="semibold"
+            textTransform="capitalize"
+          >
+            {dishType}
+          </Text>
+        ))}
+      </Flex>
+
+      {recipe.cautions.length > 0 && (
+        <>
+          <Text color='red.700'>Cautions :</Text>
+          <Flex direction="row" justify="center" flexWrap="wrap" mb={3}>
+            {recipe.cautions.map((cautions) => (
+              <Badge
+                key={cautions}
+                borderRadius="full"
+                pt={1}
+                px="2"
+                colorScheme="red"
+              >
+                {cautions}
+              </Badge>
+            ))}
+          </Flex>
+        </>
+      )}
     </Box>
   );
 };
