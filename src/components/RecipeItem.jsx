@@ -18,12 +18,26 @@ export const RecipeItem = ({ recipe, clickFn }) => {
 
       <Box mb="3">
         {recipe.healthLabels.includes("Vegetarian") && (
-          <Badge borderRadius="full" pt={1} px="2" colorScheme="orange">
+          <Badge
+            borderRadius="full"
+            pt={1}
+            px="2"
+            ml="1"
+            mb="1"
+            colorScheme="orange"
+          >
             Vegetarian
           </Badge>
         )}
         {recipe.healthLabels.includes("Vegan") && (
-          <Badge borderRadius="full" pt={1} px="2" colorScheme="green">
+          <Badge
+            borderRadius="full"
+            pt={1}
+            px="2"
+            ml="1"
+            mb="1"
+            colorScheme="green"
+          >
             Vegan
           </Badge>
         )}
@@ -36,6 +50,8 @@ export const RecipeItem = ({ recipe, clickFn }) => {
             borderRadius="full"
             pt={1}
             px="2"
+            ml="1"
+            mb="1"
             colorScheme="blue"
           >
             {dietLabel}
@@ -73,7 +89,7 @@ export const RecipeItem = ({ recipe, clickFn }) => {
 
       {recipe.cautions.length > 0 && (
         <>
-          <Text color='red.700'>Cautions :</Text>
+          <Text color="red.700">Cautions :</Text>
           <Flex direction="row" justify="center" flexWrap="wrap" mb={3}>
             {recipe.cautions.map((cautions) => (
               <Badge
@@ -81,6 +97,8 @@ export const RecipeItem = ({ recipe, clickFn }) => {
                 borderRadius="full"
                 pt={1}
                 px="2"
+                ml="1"
+                mb="1"
                 colorScheme="red"
               >
                 {cautions}
